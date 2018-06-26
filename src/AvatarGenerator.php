@@ -108,7 +108,6 @@ class AvatarGenerator
 	 */
 	private function generateAvatarByName(string $username): string
 	{
-		$fontSize = 100;
 		$font = Yii::getAlias($this->font);
 
 		$parts = explode(' ', $username);
@@ -134,12 +133,12 @@ class AvatarGenerator
 
 		$cor = imagecolorallocate($img, $contrast['r'], $contrast['g'], $contrast['b']);
 
-		$box = imageftbbox( $fontSize, 0, $font, $text );
+		$box = imageftbbox( $this->font_size, 0, $font, $text );
 		$x = ($this->size_width - ($box[2] - $box[0])) / 2;
 		$y = ($this->size_width - ($box[1] - $box[7])) / 2;
 		$y -= $box[7];
 
-		imagettftext($img, $fontSize, 0, $x, $y, $cor, $font, $text);
+		imagettftext($img, $this->font_size, 0, $x, $y, $cor, $font, $text);
 		imagepng($img, $origin);
 		imagedestroy($img);
 		return $image_file;
