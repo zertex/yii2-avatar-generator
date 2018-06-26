@@ -1,6 +1,6 @@
 {
   "name": "zertex/yii2-avatar-generator",
-  "description": "User management for Yii2 Framework.",
+  "description": "Avatar generator for Yii2 Framework.",
   "type": "yii2-extension",
   "keywords": ["yii2", "yii 2", "userpic", "avatar"],
   "license": "BSD-3-Clause",
