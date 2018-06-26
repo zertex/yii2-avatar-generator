@@ -68,3 +68,5 @@ Image for existing file with 150 px sides
 ```html
 <?= Yii::$app->avatar->show('John Smith', 150, '/path/JM_Avatar.jpg') ?>
 ```
+
+![alt text](http://zertex.ru/ext-banner.png)
