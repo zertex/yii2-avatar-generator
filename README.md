@@ -4,7 +4,6 @@ Generate avatar for user by his name or file for Yii2.
 
 [![Latest Stable Version](https://poser.pugx.org/zertex/yii2-avatar-generator/v/stable.png)](https://packagist.org/packages/zertex/yii2-avatar-generator)
 [![Total Downloads](https://poser.pugx.org/zertex/yii2-avatar-generator/downloads.png)](https://packagist.org/packages/zertex/yii2-avatar-generator)
-[![Build Status](https://travis-ci.org/zertex/yii2-avatar-generator.svg?branch=master)](https://travis-ci.org/zertex/yii2-avatar-generator)
 
 ## Installation
 
