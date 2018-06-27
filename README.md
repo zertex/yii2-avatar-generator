@@ -15,6 +15,7 @@ Generate avatar for user by his name, file or url for Yii2.
 
 ## Dependencies
 
+* PHP 7
 * PHP GD
 
 ## Installation
@@ -91,5 +92,11 @@ Image for existing file with 150 px sides
 ```html
 <?= Yii::$app->avatar->show('John Smith', 150, '/path/JM_Avatar.jpg') ?>
 ```
+
+## Todo
+
+* Using various combination for text & texture for one username in one project
+
+## Screenshot 
 
 ![alt text](http://zertex.ru/ext-banner3.png)

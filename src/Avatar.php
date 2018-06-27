@@ -6,8 +6,6 @@
 
 namespace zertex\avatar_generator;
 
-use Yii;
-
 class Avatar
 {
 	private $username;
@@ -66,14 +64,14 @@ class Avatar
 		if ($this->transit) {
 			return $this;
 		}
-		// todo income params may be array, for use random texture
+
 		if (is_array($texture)) {
 			$texture = $texture[rand(0, count($texture)-1)];
 		}
 
 		// preparing texture
 		$color   = $this->checkLightness( $this->rgb['r'], $this->rgb['g'], $this->rgb['b'] ) ? 'black' : 'white';
-		$texture = imagecreatefrompng( Yii::getAlias( $this->options->textures_folder . '/' . $texture . '-' . $color . '.png' ) );
+		$texture = imagecreatefrompng( $this->options->textures_folder . '/' . $texture . '-' . $color . '.png' );
 		$virtual_image = $this->thumb($texture, 500, 500);
 		imagecopy( $this->img, $virtual_image, 0, 0, 0, 0, 500, 500 );
 		return $this;
