@@ -11,6 +11,7 @@ Generate avatar for user by his name or file for Yii2.
 - Auto select colors by username
 - Cached images for different resolution
 - Font face and size customize 
+- Texture for background (2 available now)
 
 ## Installation
 
@@ -45,6 +46,7 @@ or `config/web.php`
         'font' => 'path_to_ttf_font',   // default: Play-Bold // may use aliases
         'font_size' => 100,             // default: 100
         'salt' => 'random_salt',        // salt for image file names
+        'texture' => 'sun',             // texture name
     ],
 ],
 ```
@@ -56,6 +58,7 @@ or `config/web.php`
 * font - `[optional]` Path to TTF font file. Yii2 aliases ready. Default: Play-Bold.ttf
 * font_size - `[optional]` Font size. Default: 100
 * salt - Random garbage for images file name
+* texture - Texture name: sun, rain. Default: empty
 
 ## Using
 

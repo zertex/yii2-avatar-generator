@@ -1,7 +1,7 @@
 {
   "name": "zertex/yii2-avatar-generator",
   "description": "Avatar generator for Yii2 Framework.",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "type": "yii2-extension",
   "keywords": ["yii2", "yii 2", "userpic", "avatar"],
   "license": "BSD-3-Clause",

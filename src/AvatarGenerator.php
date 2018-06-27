@@ -28,6 +28,7 @@ class AvatarGenerator
 	public $font = '@vendor/zertex/yii2-avatar-generator/src/Play-Bold.ttf';
 	public $font_size = 100;
 
+	public $texture;
 
 	/**
 	 * @param string $username
@@ -133,6 +134,15 @@ class AvatarGenerator
 
 		$cor = imagecolorallocate($img, $contrast['r'], $contrast['g'], $contrast['b']);
 
+		// texture
+		if ($this->texture) {
+			$color   = $this->checkLightness( $rgb['r'], $rgb['g'], $rgb['b'] ) ? 'black' : 'white';
+			$texture = imagecreatefrompng( Yii::getAlias( '@vendor/zertex/yii2-avatar-generator/src/images/' . $this->texture . '-' . $color . '.png' ) );
+			imagealphablending( $texture, false );
+			imagesavealpha( $texture, true );
+			imagecopy( $img, $texture, 0, 0, 0, 0, imagesx( $texture ), imagesy( $texture ) );
+		}
+
 		$box = imageftbbox( $this->font_size, 0, $font, $text );
 		$x = ($this->size_width - ($box[2] - $box[0])) / 2;
 		$y = ($this->size_width - ($box[1] - $box[7])) / 2;
@@ -174,6 +184,15 @@ class AvatarGenerator
 			'g' => ($g < 128) ? 255 : 0,
 			'b' => ($b < 128) ? 255 : 0
 		);
+	}
+
+	private function checkLightness($r, $g, $b)
+	{
+		if (1 - (0.299 * $r + 0.587 * $g + 0.114 * $b) / 255 < 0.5)
+		{ // светлый
+			return true;
+		}
+		return false;
 	}
 
 	private function getFileName(string $username, $size = null)
