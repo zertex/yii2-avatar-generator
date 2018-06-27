@@ -1,17 +1,21 @@
 # Avatar Generator
 
-Generate avatar for user by his name or file for Yii2.
+Generate avatar for user by his name, file or url for Yii2.
 
 [![Latest Stable Version](https://poser.pugx.org/zertex/yii2-avatar-generator/v/stable.png)](https://packagist.org/packages/zertex/yii2-avatar-generator)
 [![Total Downloads](https://poser.pugx.org/zertex/yii2-avatar-generator/downloads.png)](https://packagist.org/packages/zertex/yii2-avatar-generator)
 
 ## Features
-- Generate image by username
-- Generate image by photo
-- Auto select colors by username
-- Cached images for different resolution
+- Generate avatar by username
+- Generate avatar from file or url (http only)
+- Auto select background color by username
+- Contrast color for text
 - Font face and size customize 
 - Texture for background (2 available now)
+
+## Dependencies
+
+* PHP GD
 
 ## Installation
 
@@ -39,26 +43,28 @@ or `config/web.php`
     ...
     'avatar' => [
         'class' => 'zertex\avatar_generator\AvatarGenerator',
-        'origin_image_path' => 'path_to_image_files',
-        'cache_image_path' => 'path_to_image_files',
-        'cache_url' => 'url_to_image_files',
+        'images_folder' => 'path_to_image_files',
+        'images_url' => 'url_to_image_files',
         'size_width' => 300,            // default: 300
         'font' => 'path_to_ttf_font',   // default: Play-Bold // may use aliases
-        'font_size' => 100,             // default: 100
+        'font_size' => 300,             // default: 300
         'salt' => 'random_salt',        // salt for image file names
-        'texture' => 'sun',             // texture name
+        'texture' => ['sun', 'rain'],   // texture name
+        'text_over_image' => true,      // draw text over image (for avatar from file)
+        'texture_over_image' => true,   // draw texture over image (for avatar from file)
     ],
 ],
 ```
 
-* origin_image_path - Folder for origin image with `size_width` sides width
-* cache_image_path - Folder for cache images with custom sides width
-* cache_url - Url to cache folder for images
-* size_width - `[optional]` Origin image side width. Default: 300
-* font - `[optional]` Path to TTF font file. Yii2 aliases ready. Default: Play-Bold.ttf
-* font_size - `[optional]` Font size. Default: 100
+* images_folder - `required` Folder for images
+* images_url - `required` Url to folder with images
+* size_width - Origin image side width. Default: 300
+* font - Path to TTF font file. Yii2 aliases ready. Default: Play-Bold.ttf
+* font_size - Font size. Default: 300
 * salt - Random garbage for images file name
 * texture - Texture name: sun, rain. Default: empty
+* text_over_image - Draw text over image. For avatar created from file. Default: true
+* texture_over_image - Draw texture over image. For avatar created from file. Default: true
 
 ## Using
 
@@ -76,10 +82,14 @@ Image for existing file with default image resolution
 ```html
 <?= Yii::$app->avatar->show('John Smith', null, '/path/JM_Avatar.jpg') ?>
 ```
+or
+```html
+<?= Yii::$app->avatar->show('John Smith', null, 'http://site.org/JM_Avatar.jpg') ?>
+```
 
 Image for existing file with 150 px sides
 ```html
 <?= Yii::$app->avatar->show('John Smith', 150, '/path/JM_Avatar.jpg') ?>
 ```
 
-![alt text](http://zertex.ru/ext-banner2.png)
+![alt text](http://zertex.ru/ext-banner3.png)
