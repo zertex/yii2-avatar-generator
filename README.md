@@ -100,3 +100,7 @@ Image for existing file with 150 px sides
 ## Screenshot 
 
 ![alt text](http://zertex.ru/ext-banner3.png)
+
+## Examples
+
+https://zertex.ru/yii2-avatar-generator
