@@ -17,6 +17,7 @@ Generate avatar for user by his name, file or url for Yii2.
 
 * PHP 7
 * PHP GD
+* zertex/avatar-generator
 
 ## Installation
 
