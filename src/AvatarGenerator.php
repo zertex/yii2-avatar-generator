@@ -6,6 +6,8 @@
 
 namespace zertex\avatar_generator;
 
+use zertex\avatar\Avatar;
+use zertex\avatar\AvatarOptions;
 use Yii;
 
 /**
@@ -22,37 +24,28 @@ class AvatarGenerator
 	public $salt = 'my_random_salt';
 
 	public $font = '@vendor/zertex/yii2-avatar-generator/src/Play-Bold.ttf';
-	public $font_size = 100;
+	public $font_size = 200;
 
 	public $texture = ['sun', 'rain'];
-	public $texture_folder = '@vendor/zertex/yii2-avatar-generator/src/images';
+	public $texture_folder= '@vendor/zertex/yii2-avatar-generator/src/images';
 	public $text_over_image = true;
 	public $texture_over_image = true;
 
-	public function show(string $username, int $width = null, string $file = null): string
+	public function show(string $username, int $width = null, string $file = null, string $result_name = null): string
 	{
-		$options = new AvatarOptions();
-		$options->font = Yii::getAlias($this->font);
-		$options->textures_folder = Yii::getAlias($this->texture_folder);
-		$options->images_folder = Yii::getAlias($this->images_folder);
-		$options->width = $width;
-		$options->images_url = $this->images_url;
+		$options = AvatarOptions::create()
+		                        ->setFont(Yii::getAlias($this->font))
+		                        ->setWidth($width ?: $this->size_width)
+		                        ->setFontSize($this->font_size)
+		                        ->setTexturesFolder(Yii::getAlias($this->texture_folder))
+		                        ->setImagesFolder(Yii::getAlias($this->images_folder))
+		                        ->setImagesUrl($this->images_url)
+		                        ->setSalt($this->salt);
 
-		if ($file == null) {
-			$avatar = Avatar::init($username, $options)->username();
-		}
-		else {
-			$avatar = Avatar::init($username, $options)->file($file);
-		}
-
-		if ($this->texture_over_image || $file == null) {
-			$avatar->texture($this->texture);
-		}
-
-		if ($this->text_over_image || $file == null) {
-			$avatar->text();
-		}
-
-		return $avatar->get_file_name();
+		return Avatar::init($username, $options, $result_name)
+		             ->{($file==null) ? 'username' : 'file'}($file)
+		             ->{($this->texture_over_image || $file == null) ? 'texture' : '_blank'}($this->texture)
+		             ->{($this->text_over_image || $file == null) ? 'text' : '_blank'}()
+		             ->get_file_name();
 	}
 }

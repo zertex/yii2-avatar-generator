@@ -69,6 +69,10 @@ or `config/web.php`
 
 ## Using
 
+```
+Yii::$app->avatar->show('username', [width], [file or url], [new_file_name]);
+```
+
 Simple use with default image resolution 
 ```html
 <?= Yii::$app->avatar->show('John Smith') ?>
@@ -92,10 +96,6 @@ Image for existing file with 150 px sides
 ```html
 <?= Yii::$app->avatar->show('John Smith', 150, '/path/JM_Avatar.jpg') ?>
 ```
-
-## Todo
-
-* Using various combination for text & texture for one username in one project
 
 ## Screenshot 
 
