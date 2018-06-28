@@ -97,6 +97,12 @@ Image for existing file with 150 px sides
 <?= Yii::$app->avatar->show('John Smith', 150, '/path/JM_Avatar.jpg') ?>
 ```
 
+#### Using without Yii2 wrap
+
+You can use avatar generator without Yii2 wrap.
+Just install 
+https://github.com/zertex/avatar-generator
+
 ## Screenshot 
 
 ![alt text](http://zertex.ru/ext-banner3.png)
