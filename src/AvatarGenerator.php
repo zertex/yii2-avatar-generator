@@ -30,6 +30,8 @@ class AvatarGenerator
 	public $texture_folder= '@vendor/zertex/yii2-avatar-generator/src/images';
 	public $text_over_image = true;
 	public $texture_over_image = true;
+	
+	public $update = false;
 
 	public function show(string $username, int $width = null, string $file = null, string $result_name = null): string
 	{
