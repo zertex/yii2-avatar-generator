@@ -39,7 +39,7 @@ class AvatarGenerator
 		                        ->setFontSize($this->font_size)
 		                        ->setTexturesFolder(Yii::getAlias($this->texture_folder))
 		                        ->setImagesFolder(Yii::getAlias($this->images_folder))
-		                        ->setImagesUrl($this->images_url)
+		                        ->setImagesUrl(Yii::getAlias($this->images_url))
 		                        ->setSalt($this->salt);
 
 		return Avatar::init($username, $options, $result_name)
