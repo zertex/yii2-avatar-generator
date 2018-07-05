@@ -16,8 +16,6 @@
     "source": "https://github.com/zertex/yii2-avatar-generator"
   },
   "require": {
-    "yiisoft/yii2": "~2.0",
-    "yidas/yii2-bower-asset": "^2.0",
     "zertex/avatar-generator": "*"
   },
   "require-dev": {
