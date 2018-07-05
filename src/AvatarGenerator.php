@@ -30,8 +30,6 @@ class AvatarGenerator
 	public $texture_folder= '@vendor/zertex/yii2-avatar-generator/src/images';
 	public $text_over_image = true;
 	public $texture_over_image = true;
-	
-	public $update = false;
 
 	public function show(string $username, int $width = null, string $file = null, string $result_name = null): string
 	{
@@ -61,7 +59,7 @@ class AvatarGenerator
 		                        ->setImagesFolder(Yii::getAlias($this->images_folder))
 		                        ->setImagesUrl(Yii::getAlias($this->images_url))
 		                        ->setSalt($this->salt)
-								->setUpdate($this->update);
+								->setUpdate(true);
 
 		return Avatar::init($username, $options, $result_name)
 		             ->{($file==null) ? 'username' : 'file'}($file)
