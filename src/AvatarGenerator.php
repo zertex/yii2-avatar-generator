@@ -59,7 +59,7 @@ class AvatarGenerator
 		                        ->setImagesFolder(Yii::getAlias($this->images_folder))
 		                        ->setImagesUrl(Yii::getAlias($this->images_url))
 		                        ->setSalt($this->salt)
-								->setUpdate($this->update());
+								->setUpdate($this->update);
 
 		return Avatar::init($username, $options, $result_name)
 		             ->{($file==null) ? 'username' : 'file'}($file)
